@@ -113,3 +113,11 @@ Route::get('template/hello/blade/cond{msg?}', fn ($m = null) => view('hello.cond
 
 Route::get('template/hello/blade/repeat', fn () => view('hello.repeat'));
 Route::get('template/hello/blade/loop', fn () => view('hello.loop'));
+
+Route::get('extend/hello/', fn () => view('template.index'));
+Route::get('extend/message/', fn () => view('template.message'));
+Route::get('extend/sub-view-message/', fn () => view('template.sub-view-message'));
+Route::get('extend/each/', [Template\HelloBladeController::class, 'each']);
+
+Route::get('provider/trapped', [Template\HelloBladeController::class, 'trapped']);
+Route::get('provider/composer-class', fn () => view('template.composer-class'));

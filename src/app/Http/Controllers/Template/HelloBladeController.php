@@ -13,7 +13,7 @@ class HelloBladeController extends Controller
         $data = [
             'msg' => 'This is a Blade sample',
         ];
-        
+
         return view('hello.echo', $data);
     }
 
@@ -29,7 +29,23 @@ class HelloBladeController extends Controller
         $data = [
             'msg' => $msg,
         ];
-        
+
         return view('hello.echo', $data);
+    }
+
+    public function each()
+    {
+        $data = [
+            ['name' => '山田太郎', 'mail' => 'taro@yamada'],
+            ['name' => '田中花子', 'mail' => 'hanako@flower'],
+            ['name' => '鈴木さちこ', 'mail' => 'sachico@happy'],
+        ];
+
+        return view('template.each', ['data' => $data]);
+    }
+
+    public function trapped()
+    {
+        return view('template.trapped', ['controllerMessage' => 'controller message!']);
     }
 }
