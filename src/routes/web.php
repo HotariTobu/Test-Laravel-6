@@ -121,3 +121,32 @@ Route::get('extend/each/', [Template\HelloBladeController::class, 'each']);
 
 Route::get('provider/trapped', [Template\HelloBladeController::class, 'trapped']);
 Route::get('provider/composer-class', fn () => view('template.composer-class'));
+
+
+/**
+ * Middleware
+ */
+
+use App\Http\Middleware as mid;
+use Illuminate\Http\Request;
+
+Route::get('middleware/hello', fn (Request $req) => view('middleware.hello', [
+    'data' => $req->data,
+]))->middleware(mid\HelloMiddleware::class);
+
+Route::get('middleware/hello/alias', fn (Request $req) => view('middleware.hello', [
+    'data' => $req->data,
+]))->middleware('hello');
+
+Route::get('middleware/hello/global', fn (Request $req) => view('middleware.hello', [
+    'data' => $req->data,
+]));
+
+Route::get('middleware/hello/group', fn (Request $req) => view('middleware.hello', [
+    'data' => $req->data,
+]))->middleware('hello-group');
+
+use App\Http\Controllers\Middleware as midcon;
+
+Route::get('middleware/validation', [midcon\HelloController::class, 'get']);
+Route::post('middleware/validation', [midcon\HelloController::class, 'post']);
