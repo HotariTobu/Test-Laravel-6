@@ -175,3 +175,8 @@ Route::post('request/nabeRule', [reqcon\HelloController::class, 'nabeRule']);
 
 Route::get('request/myRule', [reqcon\HelloController::class, 'get']);
 Route::post('request/myRule', [reqcon\HelloController::class, 'myRule']);
+
+Route::get('except/csrf', fn () => view('middleware/form'));
+
+Route::get('request/cookie', [reqcon\CookieController::class, 'get']);
+Route::post('request/cookie', [reqcon\CookieController::class, 'post']);
