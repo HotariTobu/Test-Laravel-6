@@ -222,3 +222,24 @@ Route::post('db-builder/update', [dbcon\BuilderController::class, 'update']);
 
 Route::get('db-builder/delete', fn () => view('db.delete'));
 Route::post('db-builder/delete', [dbcon\BuilderController::class, 'delete']);
+
+/**
+ * Eloquent
+ */
+
+use App\Http\Controllers\Eloquent as elocon;
+
+Route::get('eloquent/select', [elocon\PersonController::class, 'select']);
+Route::get('eloquent/describe', [elocon\PersonController::class, 'describe']);
+
+Route::get('eloquent/only/{id}', [elocon\PersonController::class, 'only']);
+Route::get('eloquent/children', [elocon\PersonController::class, 'children']);
+
+Route::get('eloquent/insert', fn () => view('db.insert'));
+Route::post('eloquent/insert', [elocon\PersonController::class, 'insert']);
+
+Route::get('eloquent/update', fn () => view('db.update'));
+Route::post('eloquent/update', [elocon\PersonController::class, 'update']);
+
+Route::get('eloquent/delete', fn () => view('db.delete'));
+Route::post('eloquent/delete', [elocon\PersonController::class, 'delete']);

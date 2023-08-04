@@ -45,5 +45,15 @@ class PeopleTableSeeder extends Seeder
             'mail' => 'low@sub',
             'age' => 55,
         ]);
+        $table->insert([
+            'name' => '佐藤苺',
+            'mail' => 'strawberry@sato',
+            'age' => 3,
+        ]);
+        $table->insert([
+            'name' => '遠藤裕翔',
+            'mail' => 'yuto@end',
+            'age' => 16,
+        ]);
     }
 }
