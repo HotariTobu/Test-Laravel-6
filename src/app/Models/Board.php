@@ -9,6 +9,7 @@ class Board extends Model
 {
     use HasFactory;
 
+    // blacklist of Mass Assignment < = > fillable
     protected $guarded = ['id'];
 
     public static $rules = [

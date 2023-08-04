@@ -263,3 +263,10 @@ Route::get('relation/publishers', [elocon\PersonController::class, 'publishers']
 Route::get('relation/watchers', [elocon\PersonController::class, 'watchers']);
 
 Route::get('relation/eager', [elocon\BoardController::class, 'eager']);
+
+
+/**
+ * RESTful
+ */
+
+Route::resource('rest', App\Http\Controllers\RestdataController::class);
