@@ -198,3 +198,27 @@ Route::post('db/update', [dbcon\HelloController::class, 'update']);
 
 Route::get('db/delete', fn () => view('db.delete'));
 Route::post('db/delete', [dbcon\HelloController::class, 'delete']);
+
+/**
+ * Query Builder
+ */
+
+Route::get('db-builder/select/{page?}', [dbcon\BuilderController::class, 'select']);
+
+Route::get('db-builder/only/{id}', [dbcon\BuilderController::class, 'only']);
+Route::get('db-builder/under/{age}', [dbcon\BuilderController::class, 'under']);
+
+Route::get('db-builder/and/{id}/{age}', [dbcon\BuilderController::class, 'and']);
+Route::get('db-builder/or/{id}/{age}', [dbcon\BuilderController::class, 'or']);
+Route::get('db-builder/raw/{id}/{age}', [dbcon\BuilderController::class, 'raw']);
+
+Route::get('db-builder/orderBy/{column}', [dbcon\BuilderController::class, 'orderBy']);
+
+Route::get('db-builder/insert', fn () => view('db.insert'));
+Route::post('db-builder/insert', [dbcon\BuilderController::class, 'insert']);
+
+Route::get('db-builder/update', fn () => view('db.update'));
+Route::post('db-builder/update', [dbcon\BuilderController::class, 'update']);
+
+Route::get('db-builder/delete', fn () => view('db.delete'));
+Route::post('db-builder/delete', [dbcon\BuilderController::class, 'delete']);
