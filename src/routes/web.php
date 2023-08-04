@@ -270,3 +270,13 @@ Route::get('relation/eager', [elocon\BoardController::class, 'eager']);
  */
 
 Route::resource('rest', App\Http\Controllers\RestdataController::class);
+
+
+/**
+ * session
+ */
+
+use App\Http\Controllers\Session as sesonc;
+
+Route::get('session', [sesonc\HelloController::class, 'get']);
+Route::post('session', [sesonc\HelloController::class, 'post']);
