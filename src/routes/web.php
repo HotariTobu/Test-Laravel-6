@@ -150,3 +150,28 @@ use App\Http\Controllers\Middleware as midcon;
 
 Route::get('middleware/validation', [midcon\HelloController::class, 'get']);
 Route::post('middleware/validation', [midcon\HelloController::class, 'post']);
+
+use App\Http\Controllers\Request as reqcon;
+
+Route::get('request/hello', [reqcon\HelloController::class, 'get']);
+Route::post('request/hello', [reqcon\HelloController::class, 'post']);
+
+Route::get('request/validator', [reqcon\HelloController::class, 'get']);
+Route::post('request/validator', [reqcon\HelloController::class, 'validator']);
+
+Route::get('request/query', [reqcon\HelloController::class, 'query']);
+
+Route::get('request/message', [reqcon\HelloController::class, 'get']);
+Route::post('request/message', [reqcon\HelloController::class, 'message']);
+
+Route::get('request/sometimes', [reqcon\HelloController::class, 'get']);
+Route::post('request/sometimes', [reqcon\HelloController::class, 'sometimes']);
+
+Route::get('request/helloValidator', [reqcon\HelloController::class, 'get']);
+Route::post('request/helloValidator', [reqcon\HelloController::class, 'helloValidator']);
+
+Route::get('request/nabeRule', [reqcon\HelloController::class, 'get']);
+Route::post('request/nabeRule', [reqcon\HelloController::class, 'nabeRule']);
+
+Route::get('request/myRule', [reqcon\HelloController::class, 'get']);
+Route::post('request/myRule', [reqcon\HelloController::class, 'myRule']);
