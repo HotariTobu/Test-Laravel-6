@@ -180,3 +180,21 @@ Route::get('except/csrf', fn () => view('middleware/form'));
 
 Route::get('request/cookie', [reqcon\CookieController::class, 'get']);
 Route::post('request/cookie', [reqcon\CookieController::class, 'post']);
+
+
+/**
+ * DB
+ */
+
+use App\Http\Controllers\DB as dbcon;
+
+Route::get('db/select', [dbcon\HelloController::class, 'select']);
+
+Route::get('db/insert', fn () => view('db.insert'));
+Route::post('db/insert', [dbcon\HelloController::class, 'insert']);
+
+Route::get('db/update', fn () => view('db.update'));
+Route::post('db/update', [dbcon\HelloController::class, 'update']);
+
+Route::get('db/delete', fn () => view('db.delete'));
+Route::post('db/delete', [dbcon\HelloController::class, 'delete']);
