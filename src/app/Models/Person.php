@@ -40,4 +40,15 @@ class Person extends Model
         'mail' => 'email',
         'age' => 'integer|between:0,150',
     ];
+
+    // relation
+    public function board()
+    {
+        return $this->hasOne(Board::class);
+    }
+
+    public function boards()
+    {
+        return $this->hasMany(Board::class);
+    }
 }

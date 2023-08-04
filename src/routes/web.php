@@ -243,3 +243,23 @@ Route::post('eloquent/update', [elocon\PersonController::class, 'update']);
 
 Route::get('eloquent/delete', fn () => view('db.delete'));
 Route::post('eloquent/delete', [elocon\PersonController::class, 'delete']);
+
+/**
+ * model relation
+ */
+
+Route::get('relation/describe', [elocon\BoardController::class, 'describe']);
+
+Route::get('relation/insert', fn () => view('relation.insert'));
+Route::post('relation/insert', [elocon\BoardController::class, 'insert']);
+
+Route::get('relation/update', fn () => view('relation.update'));
+Route::post('relation/update', [elocon\BoardController::class, 'update']);
+
+Route::get('relation/delete', fn () => view('relation.delete'));
+Route::post('relation/delete', [elocon\BoardController::class, 'delete']);
+
+Route::get('relation/publishers', [elocon\PersonController::class, 'publishers']);
+Route::get('relation/watchers', [elocon\PersonController::class, 'watchers']);
+
+Route::get('relation/eager', [elocon\BoardController::class, 'eager']);

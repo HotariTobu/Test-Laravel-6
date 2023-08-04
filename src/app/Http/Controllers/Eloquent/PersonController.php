@@ -18,7 +18,7 @@ class PersonController extends Controller
 
     public function describe($page = null)
     {
-        $items = Person::all();
+        $items = Person::withoutGlobalScopes()->get();
         return view('db.describe', ['items' => $items]);
     }
 
@@ -68,5 +68,17 @@ class PersonController extends Controller
     {
         Person::withoutGlobalScopes()->find($request->id)?->delete();
         return redirect($request->path() . '/../select');
+    }
+
+    public function publishers()
+    {
+        $items = Person::withoutGlobalScopes()->has('boards')->get();
+        return view('db.describe', ['items' => $items]);
+    }
+
+    public function watchers()
+    {
+        $items = Person::withoutGlobalScopes()->doesntHave('boards')->get();
+        return view('db.describe', ['items' => $items]);
     }
 }

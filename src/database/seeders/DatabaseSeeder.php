@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Symfony\Component\Mime\BodyRendererInterface;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(PeopleTableSeeder::class);
+        $this->call(BoardsTableSeeder::class);
     }
 }
