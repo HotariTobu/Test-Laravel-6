@@ -277,6 +277,18 @@ Route::resource('rest', App\Http\Controllers\RestdataController::class);
  */
 
 use App\Http\Controllers\Session as sesonc;
+use App\Models\Person;
 
 Route::get('session', [sesonc\HelloController::class, 'get']);
 Route::post('session', [sesonc\HelloController::class, 'post']);
+
+
+/**
+ * pagination
+ */
+
+use App\Http\Controllers\PaginationController;
+
+Route::get('pagination/hello', [PaginationController::class, 'hello']);
+Route::get('pagination/sort', [PaginationController::class, 'sort']);
+Route::get('pagination/all', [PaginationController::class, 'all']);
