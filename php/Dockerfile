@@ -2,7 +2,7 @@ FROM php:apache
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y git unzip && \
+    apt install -y git unzip npm && \
     pecl install xdebug && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-install pdo_mysql && \

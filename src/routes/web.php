@@ -292,3 +292,32 @@ use App\Http\Controllers\PaginationController;
 Route::get('pagination/hello', [PaginationController::class, 'hello']);
 Route::get('pagination/sort', [PaginationController::class, 'sort']);
 Route::get('pagination/all', [PaginationController::class, 'all']);
+
+
+/**
+ * Auth
+ */
+
+use Illuminate\Support\Facades\Auth;
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('auth/hello', fn () => view('auth.hello'));
+Route::get('auth/required', fn () => view('hello.index'))->middleware('auth');
+
+Route::get('auth/sign-in/{email}/{password}', function ($e, $p) {
+    $info = [
+        'email' => $e,
+        'password' => $p,
+    ];
+
+    if (Auth::attempt($info)) {
+        $msg = 'サインインしました。' . Auth::user()->name;
+    } else {
+        $msg = 'サインインに失敗した。';
+    }
+
+    return view('hello.echo', ['msg' => $msg]);
+});
