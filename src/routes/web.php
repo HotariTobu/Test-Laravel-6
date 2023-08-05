@@ -321,3 +321,10 @@ Route::get('auth/sign-in/{email}/{password}', function ($e, $p) {
 
     return view('hello.echo', ['msg' => $msg]);
 });
+
+
+/**
+ * test
+ */
+
+Route::get('test/auth', fn () => 'login required')->middleware('auth');
