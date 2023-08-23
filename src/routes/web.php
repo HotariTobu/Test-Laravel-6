@@ -328,3 +328,10 @@ Route::get('auth/sign-in/{email}/{password}', function ($e, $p) {
  */
 
 Route::get('test/auth', fn () => 'login required')->middleware('auth');
+
+
+/**
+ * Vue
+ */
+
+ Route::get('spa/vue{any}', fn () => view('vue'))->where('any', '.*');

@@ -13,10 +13,13 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+// const app = createApp({});
+
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
 
 import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+const app = createApp(ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +39,8 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+// app.mount('#example-app');
+
+import RootComponent from './components/RootComponent.vue'
+import router from './router';
+createApp(RootComponent).use(router).mount('#app')
