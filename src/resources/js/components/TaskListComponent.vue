@@ -1,3 +1,21 @@
+<script setup>
+import { useFetch } from '@vueuse/core'
+const res = useFetch('/api/tasks').json()
+const { data: tasks } = res
+
+const deleteTask = async taskId => {
+    const { error } = await useFetch(`/api/tasks/${taskId}`).delete()
+    if (error.value) {
+        alert(error.value)
+        return
+    }
+
+    const index = tasks.value.findIndex(t => t.id === taskId)
+    const newTasks = tasks.value.toSpliced(index, 1)
+    tasks.value = newTasks
+}
+</script>
+
 <template>
     <div class="container">
         <table class="table table-hover">
@@ -13,49 +31,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Title1</td>
-                    <td>Content1</td>
-                    <td>Ichiro</td>
+                <tr v-for="task in tasks" :key="task.id">
+                    <th scope="row">{{ task.id }}</th>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.person_in_change }}</td>
                     <td>
-                        <button class="btn btn-primary">Show</button>
+                        <RouterLink :to="{ name: 'task.detail', params: { taskId: task.id } }">
+                            <button class="btn btn-primary">Show</button>
+                        </RouterLink>
                     </td>
                     <td>
-                        <button class="btn btn-success">Edit</button>
+                        <RouterLink :to="{ name: 'task.edit', params: { taskId: task.id } }">
+                            <button class="btn btn-success">Edit</button>
+                        </RouterLink>
                     </td>
                     <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Title2</td>
-                    <td>Content2</td>
-                    <td>Jiro</td>
-                    <td>
-                        <button class="btn btn-primary">Show</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-success">Edit</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Title3</td>
-                    <td>Content3</td>
-                    <td>Saburo</td>
-                    <td>
-                        <button class="btn btn-primary">Show</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-success">Edit</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger" @click="deleteTask(task.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
