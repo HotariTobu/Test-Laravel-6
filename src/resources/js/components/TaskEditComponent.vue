@@ -7,8 +7,9 @@ const props = defineProps({
     taskId: String
 })
 
-const { data: task } = useFetch(`/api/tasks/${props.taskId}`).json()
-task.value = {}
+const { data: task } = useFetch(`/api/tasks/${props.taskId}`, {
+    initialData: {},
+}).json()
 
 const isSending = ref(false)
 const error = ref(null)
