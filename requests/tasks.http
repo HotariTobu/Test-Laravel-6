@@ -1,0 +1,39 @@
+http://localhost:8000/api/tasks
+
+###
+
+POST /api/tasks HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "title": "The Title",
+    "content": "The Content",
+    "person_in_change": "Taro"
+}
+
+###
+
+GET /api/tasks/11 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8000
+
+###
+
+PUT /api/tasks/11 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "title": "The NEW Title",
+    "content": "The NEW Content",
+    "person_in_change": "NEW Taro"
+}
+
+###
+
+DELETE /api/tasks/11 HTTP/1.1
+User-Agent: vscode-restclient
+Host: localhost:8000
